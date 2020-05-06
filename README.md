@@ -65,13 +65,13 @@ The model "SSD Mobilenet V1" was used for classification of the Bosch Small Traf
 The model "SSD Inception V2" seems to perform better at the expense of speed. See [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) to see the performance comparison.
 
 ### Download
-switch to the models directory and download 
+Switch to the models directory and download 
 ```
 wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz
 
 wget http://download.tensorflow.org/models/object_detection/ssd_inception_v2_coco_2018_01_28.tar.gz
 ```
-extract them there
+Extract them here
 ```
 tar -xzf ssd_mobilenet_v1_coco_2018_01_28.tar.gz
 tar -xzf ssd_inception_v2_coco_2018_01_28.tar.gz
@@ -85,7 +85,7 @@ Go back to the TrafficLightClassification directory and create a config director
 mkdir config
 ```
 
-copy the chosen models to config
+Copy the chosen models to config
 ```
 cp models/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config config/
 cp models/research/object_detection/samples/configs/ssd_inception_v2_coco.config config/
