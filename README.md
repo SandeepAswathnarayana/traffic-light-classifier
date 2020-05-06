@@ -1,31 +1,5 @@
 # traffic-light-classifier  
 
-## Setup
-### Installation
-```
-sudo apt-get update
-pip install --upgrade dask
-```
-
-For Cuda 9
-```
-pip install tensorflow-gpu==1.12
-```
-For Cuda 8
-```
-pip install tensorflow-gpu==1.4 
-```
-
-Additional packages
-```
-sudo apt-get install protobuf-compiler python-pil python-lxml python-tk
-```
-
-Create directory for training code, model and data
-```
-mkdir TrafficLightClassification
-cd TrafficLightClassification
-```
 
 Get models from tensorflows model repository that are compatible with tensorflow 1.4
 ```
@@ -43,8 +17,8 @@ python object_detection/builders/model_builder_test.py
 ```
 
 ## Training the model
-### Data
-#### Real World
+
+#### Carla
 Images with labeled traffic lights can be found on
 
 1.  [Bosch Small Traffic Lights Dataset](https://hci.iwr.uni-heidelberg.de/node/6132)
@@ -79,8 +53,6 @@ tar -xzf ssd_inception_v2_coco_2018_01_28.tar.gz
 
 ### Model Configuration
 
-Go back to the TrafficLightClassification directory and create a config directory.
-
 ```
 mkdir config
 ```
@@ -102,7 +74,6 @@ Configuration taken from https://github.com/bosch-ros-pkg/bstld/blob/master/tf_o
 5.  Change the  `PATH_TO_BE_CONFIGURED`  placeholders in  `input_path`  and  `label_map_path`  to your .record file(s) and  `label_map.pbtxt`
 
 ### Train
-Copy `train.py` from `TrafficLightClassification/models/research/object_detection` to `TrafficLightClassification` folder
 
 Start Training with 
 ```
@@ -110,17 +81,11 @@ python train.py --logtostderr --train_dir=./models/train-ssd-inception-simulatio
 ```
 
 ### Freeze
-The trained model needs to be frozen for production. Just copy `export_inference_graph.py`  from `TrafficLightClassification/models/research/object_detection` to `TrafficLightClassification` folder. 
 
 Execute:
 ```
 python export_inference_graph.py --input_type image_tensor --pipeline_config_path ./config/ssd_inception_v2_coco-simulator.config --trained_checkpoint_prefix ./models/train-ssd-inception-simulation/model.ckpt-20000 --output_directory models/frozen-ssd_inception-simulation
 ```
-
-
-You need to change the file `TrafficLightClassification/models/research/object_detection/exporter.py` at line 72
-
-See Change: https://github.com/tensorflow/models/pull/3106/files
 
 Original:
 ```
@@ -134,7 +99,8 @@ Modified:
           layout_optimizer=rewriter_config_pb2.RewriterConfig.ON)
 ```
 
-You may find the frozen graph `frozen_inference_graph.pb` in the [Google Drive](https://drive.google.com/file/d/1QMiQcQSSGDg1GJ4mLKaypd1uKZV3AhUD/view?usp=sharing)
+You can find the frozen graph `frozen_inference_graph.pb` in the [Google Drive](https://drive.google.com/file/d/1QMiQcQSSGDg1GJ4mLKaypd1uKZV3AhUD/view?usp=sharing)
+
 
 ## Detection
 The [object detection tutorial - a jupyter notebook](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb) walks you through the steps
