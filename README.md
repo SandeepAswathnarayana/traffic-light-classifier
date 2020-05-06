@@ -134,7 +134,7 @@ Modified:
           layout_optimizer=rewriter_config_pb2.RewriterConfig.ON)
 ```
 
-You may find the frozen graph `frozen_inference_graph.pb` in the [Google Drive]()
+You may find the frozen graph `frozen_inference_graph.pb` in the [Google Drive](https://drive.google.com/file/d/1QMiQcQSSGDg1GJ4mLKaypd1uKZV3AhUD/view?usp=sharing)
 
 ## Detection
 The [object detection tutorial - a jupyter notebook](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb) walks you through the steps
