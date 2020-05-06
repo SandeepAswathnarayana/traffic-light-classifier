@@ -1,7 +1,7 @@
 # traffic-light-classifier  
 
 ## Setup
-### Installation on Linux
+### Installation
 ```
 sudo apt-get update
 pip install --upgrade dask
