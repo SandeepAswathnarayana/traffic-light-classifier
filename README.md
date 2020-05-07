@@ -1,5 +1,13 @@
 # traffic-light-classifier  
 
+## Overview
+The car would be operated on a test track and required to follow waypoints in a large circle. If the light is green, then the car is required to continue driving around the circle. If the light is red, then the car is required to stop and wait for the light to turn green. This is a part of the **Perception** process, one among the three major steps in the system integration project.  
+
+For traffic light detection and classification we decided to use an SSD (Single Shot MultiBox Detector) network as the purpose of an SSD is detect the location and classify the detected object in one pass through the network.  
+
+Due to the limited amount of data available to train the network the decision was made to take a pre-trained network and transfer learn the network on the available simulated and real datasets provided by Udacity. The chosen network was pre-trained with the COCO dataset.
+
+Transfer learning was achieved using the Object Detection API provided by Tensorflow. For simulated data the network was trained on the provided data by Udacity, however real data provided by Udacity was supplemented with a dataset of labelled traffic lights provided by Bosch. This dataset can be found [here](https://hci.iwr.uni-heidelberg.de/content/bosch-small-traffic-lights-dataset).  
 
 Get models from tensorflows model repository that are compatible with tensorflow 1.4
 ```
