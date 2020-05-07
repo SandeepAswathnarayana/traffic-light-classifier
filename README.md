@@ -17,6 +17,7 @@ python object_detection/builders/model_builder_test.py
 ```
 
 ## Training the model
+### Data
 
 #### Carla
 Images with labeled traffic lights can be found on
