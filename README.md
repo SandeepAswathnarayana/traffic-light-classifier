@@ -32,13 +32,13 @@ Training images for simulation can be found downloaded from Vatsal Srivastava's 
 1.  [Vatsal's dataset](https://github.com/coldKnight/TrafficLight_Detection-TensorFlowAPI#get-the-dataset)
 2.  [Alex Lechner's dataset](https://www.dropbox.com/s/vaniv8eqna89r20/alex-lechner-udacity-traffic-light-dataset.zip?dl=0)
 
-### Model 
+## Model 
 
 The model "SSD Mobilenet V1" was used for classification of the Bosch Small Traffic Lights Dataset. See the performance on this page https://github.com/bosch-ros-pkg/bstld .
 
 The model "SSD Inception V2" seems to perform better at the expense of speed. See [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) to see the performance comparison.
 
-### Download
+## Download
 Switch to the models directory and download 
 ```
 wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2018_01_28.tar.gz
@@ -51,7 +51,7 @@ tar -xzf ssd_mobilenet_v1_coco_2018_01_28.tar.gz
 tar -xzf ssd_inception_v2_coco_2018_01_28.tar.gz
 ```
 
-### Model Configuration
+## Model Configuration
 
 ```
 mkdir config
@@ -63,7 +63,7 @@ cp models/research/object_detection/samples/configs/ssd_mobilenet_v1_coco.config
 cp models/research/object_detection/samples/configs/ssd_inception_v2_coco.config config/
 ```
 
-#### Cofiguration on Udacity Simulation dataset for "SSD Inception V2"
+#### Configuration on Udacity Simulation dataset for "SSD Inception V2"
 
 Configuration taken from https://github.com/bosch-ros-pkg/bstld/blob/master/tf_object_detection/configs/ssd_mobilenet_v1.config
 
@@ -73,14 +73,14 @@ Configuration taken from https://github.com/bosch-ros-pkg/bstld/blob/master/tf_o
 4.  Set  `num_steps: 200000`  down to  `num_steps: 20000`
 5.  Change the  `PATH_TO_BE_CONFIGURED`  placeholders in  `input_path`  and  `label_map_path`  to your .record file(s) and  `label_map.pbtxt`
 
-### Train
+## Train
 
 Start Training with 
 ```
 python train.py --logtostderr --train_dir=./models/train-ssd-inception-simulation --pipeline_config_path=./config/ssd_inception_v2_coco-simulator.config
 ```
 
-### Freeze
+## Freeze
 
 Execute:
 ```
@@ -105,9 +105,9 @@ You can find the frozen graph `frozen_inference_graph.pb` in the [Google Drive](
 ## Detection
 The [object detection tutorial - a jupyter notebook](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb) walks you through the steps
 
-I copy and pasted many of these steps into the detector.py
+Most of the stes from above are incorporated into detector.py
 
-Take care that the following variables are set according to your needs:
+Make sure that the following variables are set according to your needs:
 
 ```
 MODEL_NAME = 'frozen-ssd_inception-simulation'
@@ -117,7 +117,7 @@ PATH_TO_TEST_IMAGES_DIR = 'test_images/simulation'
 PATH_TO_TEST_IMAGES_OUTPUTDIR = 'test_images_results/simulation'
 ```
 
-execute 
+Execute 
 ```
 python detector.py
 ```
