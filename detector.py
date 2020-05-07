@@ -18,14 +18,15 @@ from PIL import Image
 sys.path.append("models/research")
 from object_detection.utils import ops as utils_ops
 
-if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
-  raise ImportError('Please upgrade your TensorFlow installation to v1.12.*.')
+#if StrictVersion(tf.__version__) < StrictVersion('1.12.0'):
+#  raise ImportError('Please upgrade your TensorFlow installation to v1.12.*.')
 
 
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
 # Path to frozen detection graph. This is the actual model that is used for the object detection.
+# Simulation
 MODEL_NAME = 'frozen-ssd_inception-simulation'
 PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
 
@@ -33,8 +34,18 @@ PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_LABELS = os.path.join('data', 'udacity_label_map.pbtxt')
 
 PATH_TO_TEST_IMAGES_DIR = 'test_images/simulation'
-PATH_TO_TEST_IMAGES_OUTPUTDIR = 'test_images_results/simulation'
+PATH_TO_TEST_IMAGES_OUTPUTDIR = 'test_images_results/simulation/inception'
 
+"""
+# REAL
+MODEL_NAME = 'frozen-ssd_inception-real-udacity'
+PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
+# List of the strings that is used to add correct label for each box.
+PATH_TO_LABELS = os.path.join('data', 'udacity_label_map.pbtxt')
+PATH_TO_TEST_IMAGES_DIR = 'data/udacity_testarea_rgb'
+#PATH_TO_TEST_IMAGES_DIR = '/mnt/bigdata/BoschTrafficLightsConverted/train'
+PATH_TO_TEST_IMAGES_OUTPUTDIR = 'test_images_results/real/ssd_inception'
+"""
 
 # Load a (frozen) Tensorflow model into memory.
 detection_graph = tf.Graph()
@@ -135,5 +146,3 @@ for image_path in TEST_IMAGE_PATHS:
   #plt.show()
   result_image_filename = os.path.join(PATH_TO_TEST_IMAGES_OUTPUTDIR, ntpath.basename(image_path))
   plt.savefig(result_image_filename)
-
-
