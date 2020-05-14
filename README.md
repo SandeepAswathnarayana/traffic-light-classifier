@@ -1,6 +1,6 @@
 # traffic-light-classifier  
 
-**NOTE: This is the first classifier I built (using SSD INception V3) as a part of Udacity's Sytem Integration project. Later, I developed and built another classifier using Faster RCNN which performed relatively well on our traffic light dataset.**  
+**NOTE: This is the first classifier I built (using SSD Inception V3) as a part of Udacity's Sytem Integration project. Later, I developed and built another classifier using Faster RCNN which performed relatively well on our traffic light dataset.**  
 
 ## Overview
 The car would be operated on a test track and required to follow waypoints in a large circle. If the light is green, then the car is required to continue driving around the circle. If the light is red, then the car is required to stop and wait for the light to turn green. This is a part of the **Perception** process, one among the three major steps in the system integration project.  
